@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sac.cpsaa.com.pe/Producto/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Producto" targetNamespace="http://sac.cpsaa.com.pe/Producto/">
+  <wsdl:types>
+  	<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sac.cpsaa.com.pe/Producto/" xmlns:tns="http://sac.cpsaa.com.pe/Producto/">
+  		<xsd:element name="Producto" type="tns:Producto"/>
+	  	<xsd:complexType name="Producto">
+		  	<xsd:sequence>
+		  		<xsd:element name="IdProducto" type="xsd:string" minOccurs="0"/>
+		  		<xsd:element name="IdCliente" type="xsd:string" minOccurs="0"/>
+		  		<xsd:element name="NombreProducto" type="xsd:string" minOccurs="0"/>
+		  		<xsd:element name="Cantidad" type="xsd:string" minOccurs="0"/>
+		  		<xsd:element name="Precio" type="xsd:string" minOccurs="0"/>
+		  		
+		  	</xsd:sequence>
+		</xsd:complexType>
+		
+		<xsd:complexType name="ProductoArray" final="#all">
+			<xsd:sequence>
+				<xsd:element name="item" type="tns:Producto"  minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+			</xsd:sequence>
+	  	</xsd:complexType>
+		
+	</xsd:schema>
+  </wsdl:types>
+    
+  <wsdl:message name="obtenerProductoRequest">
+    <wsdl:part name="IdCliente" type="xsd:string"/>  </wsdl:message>
+  <wsdl:message name="obtenerProductoResponse">
+    <wsdl:part name="ListaProducto" type="tns:ProductoArray"/>
+  </wsdl:message>
+  <wsdl:portType name="Producto">
+    <wsdl:operation name="obtenerProducto">
+      <wsdl:input message="tns:obtenerProductoRequest" name="obtenerProductoRequest"/>
+      <wsdl:output message="tns:obtenerProductoResponse" name="obtenerProductoResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductoPortBinding" type="tns:Producto">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="obtenerProducto">
+      <soap:operation soapAction="http://sac.cpsaa.com.pe/Producto/obtenerProducto"/>
+      <wsdl:input>
+        <soap:body namespace="http://sac.cpsaa.com.pe/Producto/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body  namespace="http://sac.cpsaa.com.pe/Producto/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Producto">
+    <wsdl:port name="ProductoPort" binding="tns:ProductoPortBinding">
+      <soap:address location="http://localhost:8085/DemoProyecto/service/ObtenerProducto"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

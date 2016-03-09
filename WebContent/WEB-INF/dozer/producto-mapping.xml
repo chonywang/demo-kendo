@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mappings xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xmlns='http://dozer.sourceforge.net'
+	xsi:schemaLocation='http://dozer.sourceforge.net 
+                   http://dozer.sourceforge.net/schema/beanmapping.xsd'>
+
+
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.domain.model.Producto</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.viewmodel.ProductoViewModel
+		</class-b>
+		<field>
+			<a>id</a>
+			<b>idProducto</b>
+		</field>
+		<field>
+			<a>nombre</a>
+			<b>nombreProducto</b>
+		</field>
+		<field>
+			<a>cliente.id</a>
+			<b>idCliente</b>
+		</field>
+		<field>
+			<a>cliente.nombre</a>
+			<b>nombreCliente</b>
+		</field>
+		<field>
+			<a>cantidad</a>
+			<b>cantidadProducto</b>
+		</field>
+		<field>
+			<a>precio</a>
+			<b>precioProducto</b>
+		</field>
+	</mapping>
+	
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.domain.model.Producto</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.ws.bean.Producto
+		</class-b>
+		<field>
+			<a>id</a>
+			<b>idProducto</b>
+		</field>
+		<field>
+			<a>nombre</a>
+			<b>nombreProducto</b>
+		</field>
+		<field>
+			<a>cliente.id</a>
+			<b>idCliente</b>
+		</field>
+		<field>
+			<a>cantidad</a>
+			<b>cantidad</b>
+		</field>
+		<field>
+			<a>precio</a>
+			<b>precio</b>
+		</field>
+	</mapping>
+</mappings>

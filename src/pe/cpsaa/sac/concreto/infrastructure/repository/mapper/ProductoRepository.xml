@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN' 
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper
+	namespace='pe.cpsaa.sac.concreto.infrastructure.repository.ProductoRepository'>
+		
+	<resultMap id="ProductoResultMap" type="Producto">
+		<id property="id" column="id"/>
+		<result property="nombre" column="nombre"/>
+		
+	</resultMap>
+	
+	<resultMap id="ProductoMap" type="Producto">
+		<id property="id" column="idProducto"/>
+		<result property="nombre" column="nombreProducto"/>
+		<result property="tipoProducto" column="tipoProducto"/>
+		<result property="cantidad" column="cantidad"/>
+		<result property="precio" column="precio"/>
+	
+		<association property="cliente" javaType="Cliente">
+			<id property="id" column="idCliente"/>
+			<result property="nombre" column="nombreCliente"/>			
+		</association>
+	</resultMap>
+	
+	<select id='obtenerNombreProductosByLineaNegocio' parameterType="Long" resultType='Producto'>
+		SELECT
+		"GESAC_MAE_PROD"."SCMPR_IDE_PROD_K" AS id,
+		"GESAC_MAE_PROD"."SCMPR_NOM_PROD" AS nombre
+		FROM
+		 "GESAC_MAE_PROD",
+		 "GESAC_MAE_LINE_PROD"
+		WHERE
+		"GESAC_MAE_LINE_PROD"."SCMLP_IDE_LINE_PROD_K" = "GESAC_MAE_PROD"."SCMLP_IDE_LINE_PROD_K"
+		AND "GESAC_MAE_PROD"."SCMPR_COC_EST"='ACT'
+		AND "GESAC_MAE_LINE_PROD"."SCMLP_COC_EST"='ACT'
+		AND "GESAC_MAE_LINE_PROD"."SCMAN_IDE_NEGO_K" = #{id}
+		<!-- Esto es momentaneo hasta que depuren la data -->
+		AND ( "GESAC_MAE_LINE_PROD"."SCMLP_NOM_LINE_PROD" IN ('Concreto','Mortero','Relleno fluido','Shotcrete') )
+		ORDER BY "GESAC_MAE_PROD"."SCMPR_NOM_PROD" ASC
+	</select>
+	
+	<select id="obtenerProductoByCodSap" parameterType="string" resultType='Producto'>
+		SELECT
+			"GESAC_MAE_PROD"."SCMPR_IDE_PROD_K" AS id,
+			"GESAC_MAE_PROD"."SCMPR_NOM_PROD" AS nombre
+		FROM
+			 "GESAC_MAE_PROD"
+		WHERE
+		    "GESAC_MAE_PROD"."SCMPR_COC_EST"='ACT' AND
+			"GESAC_MAE_PROD"."SCMPR_COD_MATERIAL_SAP"=#{CodProducto} AND
+			"GESAC_MAE_PROD"."SCMLP_IDE_LINE_PROD_K"!=6
+			
+	</select>
+	
+	<select id="obtenerProductosByPlanta" parameterType="long" resultType='Producto'>
+		SELECT 
+			PROD."SCMPR_IDE_PROD_K" as "id",
+			PROD."SCMPR_NOM_PROD" as "nombre"
+		FROM 
+			 "GESAC_MAE_PROD" PROD 
+		INNER JOIN  "GESAC_MAE_LINE_PROD" LPROD on PROD."SCMLP_IDE_LINE_PROD_K"=LPROD."SCMLP_IDE_LINE_PROD_K" 
+		INNER JOIN  "GESAC_MAE_NEGO" NEGO on NEGO."SCMAN_IDE_NEGO_K"=LPROD."SCMAN_IDE_NEGO_K"
+		INNER JOIN  "GESAC_DET_NEGO_PLAN" DNEGO on NEGO."SCMAN_IDE_NEGO_K"= DNEGO."SCMAN_IDE_NEGO_K"
+		WHERE
+			DNEGO."SCMAP_IDE_PLAN_K"=#{idPlanta} AND 
+			NEGO."SCMAN_IDE_NEGO_K"=3 AND 
+			PROD."SCMPR_COC_EST"='ACT' AND
+			NEGO."SCMAN_COC_EST" = 'ACT' AND
+			LPROD."SCMLP_COC_EST" = 'ACT' AND
+			( LPROD."SCMLP_NOM_LINE_PROD" IN ('Concreto','Mortero','Relleno fluido','Shotcrete') )
+		ORDER BY 
+		   PROD."SCMPR_NOM_PROD" ASC
+
+	</select>
+	
+	<select id='obtenerProductosByProceso' parameterType='long' resultType='Producto'>
+		SELECT 
+			PROD."SCMPR_IDE_PROD_K" as "id",
+			PROD."SCMPR_NOM_PROD" as "nombre"
+		FROM 
+			 "GESAC_MAE_PROC" PROC
+			inner join  "GESAC_MAE_MATR_TRAT" MAT on PROC."SCMPC_IDE_PROC_K" = MAT."SCMPC_IDE_PROC_K"
+			inner join  "GESAC_MAE_PROD" PROD on MAT."SCMPR_IDE_PROD_K" = PROD."SCMPR_IDE_PROD_K"
+			inner join  "GESAC_MAE_LINE_PROD" on "GESAC_MAE_LINE_PROD"."SCMLP_IDE_LINE_PROD_K" = PROD."SCMLP_IDE_LINE_PROD_K"
+		WHERE 	
+			MAT."SCMMT_COC_EST" = 'ACT' AND
+			PROD."SCMPR_COC_EST" = 'ACT' AND
+			PROC."SCMPC_IDE_PROC_K" = #{idProceso}
+				AND ( "GESAC_MAE_LINE_PROD"."SCMLP_NOM_LINE_PROD" IN ('Concreto','Mortero','Relleno fluido','Shotcrete') )
+		ORDER BY  PROD."SCMPR_NOM_PROD"
+	
+	</select>
+		
+	<select id="obtenerFCProducto" parameterType="long" resultMap="ProductoResultMap">
+		select 
+			PROD."SCMPR_IDE_PROD_K" as "id",
+			PROD."SCMPR_NOM_PROD" as "nombre",
+			FC."IdFc" as "idFc",
+			FC."Fc" as "fc",
+			FC."Ft" as "ft",
+			FC."FcMpa" as "fcMpa",
+			FC."Meta" as "meta",
+			FC."Edad" as "edadFc"
+		from  "GESAC_MAE_PROD" PROD 
+		inner join "FC" FC on PROD."IdFc"=FC."IdFc"
+		where PROD."SCMPR_IDE_PROD_K"=#{idProducto}
+	</select>
+	
+	<select id="obtenerDatosProductoCartaControl" parameterType="long" resultMap="ProductoResultMap">
+		select 
+			PROD."SCMPR_IDE_PROD_K" as "id",
+			PROD."SCMPR_NOM_PROD" as "nombre",
+			FC."IdFc" as "idFc",
+			FC."Fc" as "fc",
+			FC."FcMpa" as "fcMpa",
+			FC."Meta" as "meta",
+			FC."Edad" as "edadFc",
+			TC."IdTipoCemento" as "idTipoCemento",
+			TC."Descripcion" as "descripcionTipoCemento",
+			TC."CodigoTipoCemento" as "codigoTipoCemento"			
+		from  "GESAC_MAE_PROD" PROD 
+		inner join "FC" FC on PROD."IdFc"=FC."IdFc"
+		inner join "TipoCemento" TC on PROD."IdTipoCemento"=TC."IdTipoCemento"		
+		where PROD."SCMPR_IDE_PROD_K"=#{idProducto}
+	</select>
+
+	<select id="obtenerProductoById" parameterType="Producto" resultType="Producto">
+	
+		SELECT 
+			producto.IDPRODUCTO as idProducto, 
+			cliente.IDCLIENTE as idCliente, 
+			cliente.NOMBRE as nombreCliente, 
+			producto.NOMBRE as nombreProducto, 
+			producto.TIPOPRODUCTO as tipoProducto, 
+			producto.CANTIDAD as cantidad, 
+			producto.PRECIO as precio
+		FROM  PRODUCTO producto
+		INNER JOIN  CLIENTE cliente ON cliente.IDCLIENTE = producto.IDCLIENTE
+		WHERE IDPRODUCTO = #{id}
+	
+	</select>
+	
+	<select id="obtenerProducto" parameterType="Producto" resultMap="ProductoMap">
+	
+		SELECT 
+			producto.IDPRODUCTO as idProducto, 
+			cliente.IDCLIENTE as idCliente, 
+			cliente.NOMBRE as nombreCliente, 
+			producto.NOMBRE as nombreProducto, 
+			producto.TIPOPRODUCTO as tipoProducto, 
+			producto.CANTIDAD as cantidad, 
+			producto.PRECIO as precio
+		FROM  PRODUCTO producto
+		INNER JOIN  CLIENTE cliente ON cliente.IDCLIENTE = producto.IDCLIENTE
+		
+		
+		
+	</select>
+	
+	<insert id="registrarProducto" parameterType="Producto">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">			
+			SELECT SEQIDPRODUCTO.nextVal from dual	
+		</selectKey>
+		INSERT INTO  PRODUCTO (
+            IDPRODUCTO,IDCLIENTE,NOMBRE,TIPOPRODUCTO,CANTIDAD,PRECIO)
+    	VALUES (
+    	    #{id},
+    		#{cliente.id},
+    		#{nombre}, #{tipoProducto}, 
+            #{cantidad}, #{precio})
+	</insert>
+	
+	<update id="modificarProducto" parameterType="Producto">
+		UPDATE   PRODUCTO 
+		SET
+			NOMBRE = #{nombre} , 
+			TIPOPRODUCTO = #{tipoProducto}, 
+			CANTIDAD = #{cantidad}, 
+			PRECIO = #{precio}
+		WHERE IDPRODUCTO = #{id} 
+	</update>
+	
+	<delete id="eliminarProducto" parameterType="Producto">
+		DELETE FROM   PRODUCTO 
+		WHERE IDPRODUCTO = #{id} 
+			
+	</delete>
+	
+	<select id="obtenerProductoByCliente" parameterType="Producto" resultMap="ProductoMap">
+	
+		SELECT 
+			IDPRODUCTO as idProducto, 
+			IDCLIENTE as idCliente,
+			NOMBRE as nombreProducto, 
+			CANTIDAD as cantidad, 
+			PRECIO as precio
+		FROM  PRODUCTO 
+		WHERE IDCLIENTE = #{cliente.id}
+		
+		
+		
+	</select>
+
+</mapper>

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN' 
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper
+	namespace='pe.cpsaa.sac.concreto.infrastructure.repository.ClienteRepository'>
+
+
+	<select id="obtenerClientePorRuc" resultType="Cliente"
+		parameterType="String">
+		select
+		CLI."IdCliente" as "id",
+		CLI."Nombre" as "nombre"
+		from
+		"Cliente" CLI
+		where
+		CLI."RUC" = #{ruc}
+
+	</select>
+
+	<select id='obtenerCliente' resultType='Cliente' parameterType="Cliente">
+
+		SELECT
+		IDCLIENTE as id,
+		NOMBRE as nombre,
+		APELLIDO as apellido,
+		SEXO as sexo,
+		CORREO as correo,
+		TIPOCLIENTE as tipoCliente,
+		ESTADOCIVIL as estadoCivil
+		FROM CLIENTE
+
+	</select>
+
+	<select id='obtenerClienteCombo' resultType='Cliente'>
+
+		SELECT
+		IDCLIENTE as id,
+		NOMBRE as nombre,
+		APELLIDO as apellido,
+		SEXO as sexo,
+		CORREO as correo,
+		TIPOCLIENTE as tipoCliente,
+		ESTADOCIVIL as estadoCivil
+		FROM CLIENTE
+
+	</select>
+
+
+
+	<select id='obtenerContratistaObra' parameterType="map"
+		resultType='Cliente'>
+
+		select distinct
+		CLI."IdCliente" as "id",
+		CLI."Nombre" as "nombre",CLI.*
+		from "Cliente" CLI
+		inner join "Obra" OBRA on
+		OBRA."IdContratista" = CLI."IdCliente"
+
+
+		where CLI."FlagContratista"='S' and "Estado" = 'ACT'
+		order by CLI."Nombre"
+
+	</select>
+
+	<select id='obtenerClientePorId' resultType='Cliente'
+		parameterType="Cliente">
+
+		SELECT
+		IDCLIENTE as id,
+		NOMBRE as nombre,
+		APELLIDO as apellido,
+		SEXO as sexo,
+		CORREO as correo,
+		TIPOCLIENTE as tipoCliente,
+		ESTADOCIVIL as estadoCivil
+		FROM CLIENTE
+		WHERE IDCLIENTE = #{id}
+
+	</select>
+
+	<insert id="registrarCliente" parameterType="Cliente">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">			
+			SELECT SEQIDCLIENTE.nextVal from dual	
+		</selectKey>
+
+		INSERT INTO CLIENTE
+		(
+		IDCLIENTE,
+		NOMBRE,
+		APELLIDO,
+		SEXO,
+		CORREO,
+		TIPOCLIENTE,
+		ESTADOCIVIL
+		) VALUES (
+		#{id},
+		#{nombre},
+		#{apellido},
+		#{sexo},
+		#{correo},
+		#{tipoCliente},
+		#{estadoCivil}
+		)
+
+	</insert>
+
+	<update id="modificarCliente" parameterType="Cliente">
+		UPDATE CLIENTE
+		SET
+		NOMBRE = #{nombre},
+		APELLIDO = #{apellido},
+		SEXO = #{sexo},
+		CORREO = #{correo},
+		TIPOCLIENTE = #{tipoCliente},
+		ESTADOCIVIL = #{estadoCivil}
+		WHERE IDCLIENTE = #{id}
+
+	</update>
+
+	<insert id="registrarClienteSAP" parameterType="Cliente">
+
+		insert into "CPSAA"."Cliente"
+		(
+		"IdCliente",
+		"Codigo",
+		"Nombre",
+		"CodigoSAP",
+		"FlagCliente",
+		"FlagContratista",
+		"RUC",
+		"Telefono",
+		"UsuarioRegistro",
+		"FechaHoraRegistro",
+		"Estado"
+		)
+		values(
+		#{id},
+		#{codigo},
+		#{nombre},
+		#{codigoSap},
+		#{flagCliente},
+		#{flagContratista},
+		#{ruc},
+		#{telefono},
+		'USUARIO_SAP',
+		CURRENT_TIMESTAMP,
+		#{estado}
+		)
+
+	</insert>
+
+	<insert id="registrarContratistaSAP" parameterType="Cliente">
+
+		insert into "CPSAA"."Cliente"
+		(
+		"IdCliente",
+		"Codigo",
+		"Nombre",
+		"CodigoSAP",
+		"FlagContratista",
+		"FlagCliente",
+		"Correo1",
+		"Correo2",
+		"Correo3",
+		"RUC",
+		"Telefono",
+		"UsuarioRegistro",
+		"FechaHoraRegistro",
+		"Estado"
+		)
+		values(
+		#{id},
+		#{codigo},
+		#{nombre},
+		#{codigoSap},
+		#{flagContratista},
+		#{flagCliente},
+		#{correo1},
+		#{correo2},
+		#{correo3},
+		#{ruc},
+		#{telefono},
+		'USUARIO_SAP',
+		CURRENT_TIMESTAMP,
+		#{estado}
+		)
+
+	</insert>
+
+	<delete id="eliminarCliente" parameterType="Cliente">
+
+		DELETE FROM CLIENTE
+		where IDCLIENTE =#{id}
+
+	</delete>
+
+	<select id='obtenerClientePorCodSAP' resultType='Cliente'
+		parameterType="string">
+
+		select
+		CLI."IdCliente" as "id",
+		CLI."Nombre" as "nombre",
+		CLI."CodigoSAP" as "codigoSap",
+		CLI."Codigo" as "codigo",
+		CLI."FlagCliente" as "flagCliente",
+		CLI."FlagContratista" as "flagContratista",
+		CLI."Correo1" as "correo1",
+		CLI."Correo2" as "correo2",
+		CLI."Correo3" as "correo3",
+		CLI."RUC" as "ruc",
+		CLI."Telefono" as "telefono",
+		CASE
+		WHEN CLI."Estado"='ACT' THEN 'Activo'
+		WHEN CLI."Estado"='INA' THEN 'Inactivo'
+		END as "Estado"
+		from "CPSAA"."Cliente" CLI
+		where
+		CLI."CodigoSAP"=#{codigoSap}
+
+	</select>
+
+	<update id='modificarFlagCliente' parameterType="map">
+
+		update "CPSAA"."Cliente"
+		set
+		"FlagCliente"=#{flagCliente}
+		where "IdCliente"=#{id}
+
+	</update>
+
+	<update id='modificarFlagContratista' parameterType="map">
+
+		update "CPSAA"."Cliente"
+		set
+		"FlagContratista"=#{flagContratista},
+		"Correo1"=#{correo1},
+		"Correo2"=#{correo2},
+		"Correo3"=#{correo3}
+		where "IdCliente"=#{id}
+
+	</update>
+
+	<select id="obtenerCodigoClienteComienzaCon" parameterType="string"
+		resultType="string">
+
+		<bind name="patron" value="_parameter + '%'" />
+
+		select DISTINCT
+		"Codigo"
+		from "CPSAA"."Cliente"
+		where
+		"Codigo" like #{patron}
+		ORDER BY
+		"Codigo"
+
+	</select>
+
+	<select id="obtenerNombreClienteComienzaCon" parameterType="string"
+		resultType="string">
+
+		<bind name="patron" value="_parameter + '%'" />
+
+		select DISTINCT
+		UPPER("Nombre") AS "Nombre"
+		from "CPSAA"."Cliente"
+		where
+		LOWER("Nombre") like #{patron}
+		ORDER BY
+		"Nombre"
+
+	</select>
+
+	<select id="obtenerRucClienteComienzaCon" parameterType="string"
+		resultType="string">
+
+		<bind name="patron" value="_parameter + '%'" />
+
+		select DISTINCT
+		"RUC"
+		from "CPSAA"."Cliente"
+		where
+		"RUC" like #{patron}
+		ORDER BY
+		"RUC"
+
+	</select>
+
+	<select id="obtenerCantidadObrasDeClienteContratista"
+		parameterType="long" resultType="int">
+
+		SELECT
+		COUNT(*)
+		FROM
+		"CPSAA"."Obra"
+		WHERE
+		"IdCliente" = #{id} OR "IdContratista" = #{id}
+
+	</select>
+
+	<select id="obtenerCantidadLotesDeClienteContratista"
+		parameterType="long" resultType="int">
+
+		SELECT
+		COUNT(*)
+		FROM
+		"CPSAA"."LoteConcreto"
+		WHERE
+		"IdCliente" = #{id} OR "IdContratista" = #{id}
+
+	</select>
+
+	<select id="obtenerContratistaPorCliente" parameterType="long"
+		resultType="Cliente">
+		SELECT DISTINCT
+		CONTRATISTA."IdCliente" AS id,
+		CONTRATISTA."Nombre" AS nombre
+		FROM
+		"CPSAA"."Cliente" CLIENTE,
+		"CPSAA"."Cliente" CONTRATISTA,
+		"CPSAA"."Obra" OBRA
+		WHERE
+		OBRA."IdCliente" = CLIENTE."IdCliente" AND
+		OBRA."IdContratista" = CONTRATISTA."IdCliente" AND
+		CLIENTE."IdCliente" = #{idCliente}
+		ORDER BY
+		CONTRATISTA."Nombre"
+	</select>
+
+</mapper>

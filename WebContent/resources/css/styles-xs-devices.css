@@ -1,0 +1,32 @@
+
+/*Estilos para pantallas tipo Phones col-xs-(numero de columnas)*/
+
+@media (max-width: 768px) {
+		
+	.remove-padding-left-col-xs {
+		padding-left: 0px;
+   		padding-right: 15px;
+   	}
+	.remove-padding-right-col-xs {
+		padding-left: 15px;
+   		padding-right: 0px;
+	}
+	.remove-padding-lateral-col-xs {
+		padding: 0px;
+	}
+	.row-padding-top-xs {
+		padding-top: 15px;
+	}
+	.row-padding-top-popup-xs {
+		padding-top: 20px;
+	}
+	.row-padding-bottom-xs {
+		padding-bottom: 20px;
+	}
+	.row-padding-bottom-popup-xs {
+		padding-bottom: 20px;
+	}
+	
+	
+	
+}

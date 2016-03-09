@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN' 
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper
+	namespace='pe.cpsaa.sac.concreto.infrastructure.repository.TablaGeneralRepository'>
+
+	
+
+	<select id='obtenerTablaGeneral'  resultType='TablaGeneral' parameterType="map">
+		select 
+			"SCSTG_COD_LLA_TAB" as "id",
+			"SCSTG_NOM_TAB_MOS" as "nombre" 
+		from "CPSAA"."GESAC_SYS_TABL_GENE" 
+		where "SCSTG_COD_TAB_GEN"=#{tablaGeneral}
+		order by "SCSTG_NRO_ORD"		
+	</select>
+	
+</mapper>

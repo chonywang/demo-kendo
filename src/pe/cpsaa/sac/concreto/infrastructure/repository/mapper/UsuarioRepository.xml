@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN' 
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='pe.cpsaa.sac.concreto.infrastructure.repository.UsuarioRepository'>
+
+	
+	<select id='obtenerAutenticacionUsuario' parameterType='CredencialDto' resultType='Usuario'>
+		SELECT 
+			NOMBRE as nombre, 
+			APELLIDOPATERNO as apellidoPaterno,
+			APELLIDOMATERNO as apellidoMaterno,
+			EMAIL as email
+		FROM  Usuario 
+		WHERE NOMBREUSUARIO = #{usuario}
+		AND CLAVEUSUARIO = #{contrasenia}
+			
+	</select>
+	
+	
+</mapper>

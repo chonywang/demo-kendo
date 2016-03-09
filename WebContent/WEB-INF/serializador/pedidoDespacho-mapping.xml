@@ -1,0 +1,157 @@
+<mapping>
+        <class name="pe.cpsaa.sac.concreto.domain.model.PedidoDespachoRequest">
+           <map-to xml="pedidoDespachoRequest" ns-uri="http://www.cpsaa.com.pe/ws/schemas/concreto"/>
+            
+	        <field name="pedidoSAP" type="string">
+	            <bind-xml name="PedidoSAP" node="element" />
+	        </field>
+			
+	 		<field name="pedidoSAPPadre" type="string">
+	            <bind-xml name="PedidoSAPPadre" node="element" />
+	        </field>
+	        
+	        <field name="codigoSAPEmpresa" type="string">
+	            <bind-xml name="CodigoSAPEmpresa" node="element" />
+	        </field>
+	       
+	       	<field name="descripcionSAPEmpresa" type="string">
+	            <bind-xml name="DescripcionSAPEmpresa" node="element" />
+	        </field>
+	       
+			<field name="codigoSAPPlanta" type="string">
+	            <bind-xml name="CodigoSAPPlanta" node="element" />
+	        </field>
+			
+			<field name="descripcionSAPPlanta" type="string">
+	            <bind-xml name="DescripcionSAPPlanta" node="element" />
+	        </field>
+			
+			<field name="fechaDespacho" type="string">
+	            <bind-xml name="FechaDespacho" node="element" />
+	        </field>
+			
+			<field name="codigoSAPProducto" type="string">
+	            <bind-xml name="CodigoSAPProducto" node="element" />
+	        </field>
+			
+			<field name="descripcionSAPProducto" type="string">
+	            <bind-xml name="DescripcionSAPProducto" node="element" />
+	        </field>
+			
+			<field name="volumenDespachado" type="string">
+	            <bind-xml name="VolumenDespachado" node="element" />
+	        </field>
+			
+			<field name="fechaHoraInicioProduccion" type="string">
+	            <bind-xml name="FechaHoraInicioProduccion" node="element" />
+	        </field>
+			
+			<field name="codigoSAPCliente" type="string">
+	            <bind-xml name="CodigoSAPCliente" node="element" />
+	        </field>
+	        
+	        <field name="nombreSAPCliente" type="string">
+	            <bind-xml name="NombreSAPCliente" node="element" />
+	        </field>
+			
+			<field name="codigoSAPContratista" type="string">
+	            <bind-xml name="CodigoSAPContratista" node="element" />
+	        </field>
+			
+			<field name="nombreSAPContratista" type="string">
+	            <bind-xml name="NombreSAPContratista" node="element" />
+	        </field>
+			
+			<field name="correoSAPContratista1" type="string">
+	            <bind-xml name="CorreoSAPContratista1" node="element" />
+	        </field>
+		
+			<field name="correoSAPContratista2" type="string">
+	            <bind-xml name="CorreoSAPContratista2" node="element" />
+	        </field>
+	        
+	        <field name="correoSAPContratista3" type="string">
+	            <bind-xml name="CorreoSAPContratista3" node="element" />
+	        </field>
+	        
+	        <field name="codigoSAPObra" type="string">
+	            <bind-xml name="CodigoSAPObra" node="element" />
+	        </field>
+	        
+	        <field name="descripcionSAPObra" type="string">
+	            <bind-xml name="DescripcionSAPObra" node="element" />
+	        </field>
+			
+			<field name="estructura" type="string">
+	            <bind-xml name="Estructura" node="element" />
+	        </field>
+			
+			<field name="modalidad" type="string">
+	            <bind-xml name="Modalidad" node="element" />
+	        </field>
+			
+			<field name="dt" type="string">
+	            <bind-xml name="DT" node="element" />
+	        </field>
+	        
+	        <field name="gr" type="string">
+	            <bind-xml name="GR" node="element" />
+	        </field>
+			
+			<field name="mixer" type="string">
+	            <bind-xml name="Mixer" node="element" />
+	        </field>
+	        
+	        <field name="codigoSAPMixer" type="string">
+	            <bind-xml name="CodigoSAPMixer" node="element" />
+	        </field>
+	        
+	        <field name="direccionLLegadaDT" type="string">
+	            <bind-xml name="DireccionLLegadaDT" node="element" />
+	        </field>
+			
+			<field name="cantidadDespachada" type="string">
+	            <bind-xml name="CantidadDespachada" node="element" />
+	        </field>
+			
+			<field name="fechaHoraAprobacion" type="string">
+	            <bind-xml name="FechaHoraAprobacion" node="element" />
+	        </field>
+			
+			<field name="codigoSAPEquipo" type="string">
+	            <bind-xml name="CodigoSAPEquipo" node="element" />
+	        </field>
+	        
+	        <field name="descripcionSAPEquipo" type="string">
+	            <bind-xml name="DescripcionSAPEquipo" node="element" />
+	        </field>
+			
+			<field name="telefonoSAPCliente" type="string">
+	            <bind-xml name="TelefonoSAPCliente" node="element" />
+	        </field>
+			
+			<field name="rucSAPCliente" type="string">
+	            <bind-xml name="RucSAPCliente" node="element" />
+	        </field>
+			
+			<field name="telefonoSAPContratista" type="string">
+	            <bind-xml name="TelefonoSAPContratista" node="element" />
+	        </field>
+			
+			<field name="rucSAPContratista" type="string">
+	            <bind-xml name="RucSAPContratista" node="element" />
+	        </field>
+        </class>
+         
+        <class name="pe.cpsaa.sac.concreto.domain.model.PedidoDespachoResponse">
+           <map-to xml="pedidoDespachoResponse" ns-uri="http://www.cpsaa.com.pe/ws/schemas/concreto"/>
+       
+           <field name="codigo" type="string">
+	           <bind-xml name="Codigo" node="element" />
+	        </field>
+	 
+	        <field name="descripcion" type="string">
+	           <bind-xml name="Descripcion" node="element" />
+	        </field>
+        </class>
+</mapping>

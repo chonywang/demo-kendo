@@ -1,0 +1,33 @@
+
+/*Estilos para pantallas tipo Tablet col-sm-(numero de columnas)*/
+
+@media (min-width: 768px) {
+	
+	.remove-padding-left-col-sm {
+		padding-left: 0px;
+   		padding-right: 15px;
+   	}
+	.remove-padding-right-col-sm {
+		padding-left: 15px;
+   		padding-right: 0px;
+	}
+	.remove-padding-lateral-col-sm {
+		padding: 0px;
+	}
+	.row-padding-top-sm {
+		padding-top: 15px;
+	}
+	.row-padding-top-popup-sm {
+		padding-top: 20px;
+	}
+	.row-padding-bottom-sm {
+		padding-bottom: 20px;
+	}
+	.row-padding-bottom-popup-sm {
+		padding-bottom: 20px;
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mappings xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xmlns='http://dozer.sourceforge.net'
+	xsi:schemaLocation='http://dozer.sourceforge.net 
+                   http://dozer.sourceforge.net/schema/beanmapping.xsd'>
+
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.domain.model.Cliente</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.viewmodel.ClienteViewModel</class-b>
+		<field>
+			<a>id</a>
+			<b>idCliente</b>
+		</field>
+		<field>
+			<a>nombre</a>
+			<b>nombreCliente</b>
+		</field>
+		<field>
+			<a>apellido</a>
+			<b>apellidoCliente</b>
+		</field>
+		<field>
+			<a>sexo</a>
+			<b>sexoCliente</b>
+		</field>
+		
+		<field>
+			<a>tipoCliente</a>
+			<b>tipoCliente</b>
+		</field>
+		<field>
+			<a>correo</a>
+			<b>correoCliente</b>
+		</field>
+		<field>
+			<a>estadoCivil</a>
+			<b>estadoCivilCliente</b>
+		</field>
+	</mapping>
+
+</mappings>

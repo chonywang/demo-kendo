@@ -1,0 +1,25 @@
+<mapping>
+        <class name="pe.cpsaa.sac.concreto.domain.model.EnsayoRequest">
+           <map-to xml="ensayoRequest" ns-uri="http://www.cpsaa.com.pe/ws/schemas/concreto"/>
+            
+	        <field name="nombre" type="string">
+	            <bind-xml name="Nombre" node="element" />
+	        </field>
+			
+			<field name="ruc" type="string">
+	            <bind-xml name="Ruc" node="element" />
+	        </field>
+		</class>
+         
+        <class name="pe.cpsaa.sac.concreto.domain.model.EnsayoResponse">
+           <map-to xml="ensayoResponse" ns-uri="http://www.cpsaa.com.pe/ws/schemas/concreto"/>
+       
+           <field name="codigo" type="string">
+	           <bind-xml name="Codigo" node="element" />
+	        </field>
+	 
+	        <field name="descripcion" type="string">
+	           <bind-xml name="Descripcion" node="element" />
+	        </field>
+        </class>
+</mapping>

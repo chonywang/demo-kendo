@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<!-- changes from the defaults -->
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
+	<typeAliases>
+		
+		<typeAlias type='pe.cpsaa.sac.concreto.domain.model.Producto'
+			alias='Producto' />	
+		<typeAlias type='pe.cpsaa.sac.concreto.domain.model.Cliente'
+			alias='Cliente' />
+		
+		<typeAlias type='pe.cpsaa.sac.concreto.domain.model.TablaGeneral'
+			alias='TablaGeneral' />
+			
+		<typeAlias type="pe.cpsaa.sac.concreto.domain.model.Usuario"
+			alias="Usuario"/>
+			
+		<typeAlias type="pe.cpsaa.sac.concreto.presentation.viewmodel.CredencialDto"
+			alias="CredencialDto"/>		
+	</typeAliases>
+</configuration>

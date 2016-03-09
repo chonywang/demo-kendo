@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mappings xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xmlns='http://dozer.sourceforge.net'
+	xsi:schemaLocation='http://dozer.sourceforge.net 
+                   http://dozer.sourceforge.net/schema/beanmapping.xsd'>
+	
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.domain.model.MuestraAleatoriaConcreto</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.viewmodel.MuestraAleatoriaGrillaViewModel</class-b>
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.producto.nombre</a>
+			<b>nombreProducto</b>
+		</field>
+		
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.cliente.nombre</a>
+			<b>nombreCliente</b>
+		</field>
+		
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.obra.nombre</a>
+			<b>nombreObra</b>
+		</field>
+		
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.codigo</a>
+			<b>codLote</b>
+		</field>
+		
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.codigoDescripcion</a>
+			<b>codLoteDescripcion</b>
+		</field>
+		
+		<field>
+			<a>muestraIndividualConcreto.mixer.placa</a>
+			<b>placaMixer</b>
+		</field>
+		
+	</mapping>
+	
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.domain.model.MuestraAleatoriaConcreto</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.viewmodel.MuestraAleatoriaReasigViewModel</class-b>
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.codigo</a>
+			<b>codLote</b>
+		</field>
+		
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.producto.id</a>
+			<b>idProducto</b>
+		</field>
+		
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.producto.nombre</a>
+			<b>nombreProducto</b>
+		</field>
+		
+		<field>
+			<a>muestraIndividualConcreto.idMuestraIndividual</a>
+			<b>idMuestraIndividual</b>
+		</field>
+		
+		<field>
+			<a>proceso.id</a>
+			<b>idProceso</b>
+		</field>		
+		<field>
+			<a>molde.tipoMolde.id</a>
+			<b>idTipoMolde</b>
+		</field>
+		<field>
+			<a>molde.tipoMolde.numeroProbetas</a>
+			<b>numeroProbetas</b>
+		</field>
+		<field>
+			<a>molde.id</a>
+			<b>idMolde</b>
+		</field>
+	</mapping>
+	
+	<mapping>
+		
+		<class-a>pe.cpsaa.sac.concreto.domain.model.MuestraAleatoriaConcreto</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.viewmodel.IngresoCuradoPopupViewModel</class-b>
+		
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.codigo</a>
+			<b>codigoLote</b>			
+		</field>
+		<field>
+			<a>loteMolde.tipoMolde</a>
+			<b>tipoMolde</b>
+		</field>
+		<field>
+			<a>loteMolde.numeroLoteMolde</a>
+			<b>numeroMolde</b>
+		</field>		
+		<field>
+			<a date-format="dd/MM/yyyy">fechaHoraIngresoCuradoPlanif</a>
+			<b>fechaPlanificada</b>
+		</field>
+		<field>
+			<a date-format="HH:mm">fechaHoraIngresoCuradoPlanif</a>
+			<b>horaPlanificada</b>
+		</field>
+		<field>
+			<a date-format="dd/MM/yyyy">fechaHoraIngresoCurado</a>
+			<b>fechaReal</b>
+		</field>
+		<field>
+			<a date-format="HH:mm">fechaHoraIngresoCurado</a>
+			<b>horaReal</b>
+		</field>
+		
+		<field>
+			<a date-format="dd/MM/yyyy HH:mm">fechaHoraRecojoPlanif</a>
+			<b>fechaHoraRecojoPlanificada</b>
+		</field>
+		
+	</mapping>
+		
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.domain.model.MuestraAleatoriaConcreto</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.viewmodel.IngresoCuradoPendienteReporteDto</class-b>
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.codigo</a>
+			<b>codigoLote</b>			
+		</field>
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.producto.nombre</a>
+			<b>nombreProducto</b>
+		</field>
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.cliente.nombre</a>
+			<b>cliente</b>
+		</field>
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.obra.nombre</a>
+			<b>obra</b>
+		</field>
+		<field>
+			<a>muestraIndividualConcreto.loteConcreto.estructura</a>
+			<b>estructura</b>
+		</field>
+		<field>
+			<a>muestraIndividualConcreto.direccion</a>
+			<b>direccion</b>
+		</field>
+		<field>
+			<a>loteMolde.tipoMolde</a>
+			<b>tipoProbeta</b>
+		</field>
+		<field>
+			<a>loteMolde.probetas</a>
+			<b>totalProbetas</b>
+		</field>
+		<field>
+			<a date-format="dd/MM/yyyy HH:mm">fechaHoraMuestraAleatoria</a>
+			<b>fechaHoraMuestraAleatoria</b>
+		</field>
+		<field>
+			<a date-format="dd/MM/yyyy HH:mm">fechaHoraRecojoPlanif</a>
+			<b>fechaHoraRecojoPlanificado</b>
+		</field>
+		<field>
+			<a>horaRetraso</a>
+			<b>tiempoRetraso</b>
+		</field>
+		<field>
+			<a>estadoIngresoCurado</a>
+			<b>estado</b>
+		</field>
+	</mapping>
+		
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.domain.model.LoteConcreto</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.viewmodel.LoteConcretoCertificadoCalidadGrillaViewModel</class-b>
+		<field>
+			<a>producto.nombre</a>
+			<b>nombreProducto</b>		
+		</field>
+		<field>
+			<a date-format="dd/MM/yyyy HH:mm">fechaInicioProduccion</a>
+			<b>fechaInicioProduccion</b>		
+		</field>
+		<field>
+			<a>cliente.nombre</a>
+			<b>nombreCliente</b>		
+		</field>
+		<field>
+			<a>obra.correo1</a>
+			<b>correoCliente1</b>		
+		</field>
+		<field>
+			<a>obra.correo2</a>
+			<b>correoCliente2</b>		
+		</field>
+		<!-- <field>
+			<a>cliente.correo3</a>
+			<b>correoCliente3</b>		
+		</field> -->
+		<field>
+			<a>obra.nombre</a>
+			<b>nombreObra</b>		
+		</field>
+	</mapping>
+	
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.domain.model.LoteConcreto</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.viewmodel.LoteGrillaViewModel</class-b>
+		<field>
+			<a>producto.nombre</a>
+			<b>nombreProducto</b>		
+		</field>
+<!-- 		<field> -->
+<!-- 			<a date-format="dd/MM/yyyy HH:mm">fechaInicioProduccion</a> -->
+<!-- 			<b>fechaInicioProduccion</b>		 -->
+<!-- 		</field> -->
+		<field>
+			<a>producto.fc.fc</a>
+			<b>fc</b>		
+		</field>
+		<field>
+			<a>producto.fc.edad</a>
+			<b>edadFc</b>		
+		</field>
+		<field>
+			<a>producto.fc.ft</a>
+			<b>mr</b>		
+		</field>
+		<field>
+			<a>cliente.nombre</a>
+			<b>nombreCliente</b>		
+		</field>
+		<field>
+			<a>contratista.nombre</a>
+			<b>nombreContratista</b>		
+		</field>
+		<field>
+			<a>obra.nombre</a>
+			<b>nombreObra</b>		
+		</field>
+	</mapping>
+	
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.domain.model.LoteConcreto</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.viewmodel.LoteModificarViewModel</class-b>
+		<field>
+			<a>planta.empresa.id</a>
+			<b>idEmpresa</b>		
+		</field>
+		<field>
+			<a>planta.id</a>
+			<b>idPlanta</b>		
+		</field>
+		<field>
+			<a>producto.id</a>
+			<b>idProducto</b>		
+		</field>
+<!-- 		<field> -->
+<!-- 			<a date-format="dd/MM/yyyy HH:mm">fechaInicioProduccion</a> -->
+<!-- 			<b>fechaInicioProduccion</b>		 -->
+<!-- 		</field> -->
+		<field>
+			<a>producto.fc.fc</a>
+			<b>fc</b>		
+		</field>
+		<field>
+			<a>producto.fc.edad</a>
+			<b>edadFc</b>		
+		</field>
+		<field>
+			<a>producto.fc.ft</a>
+			<b>mr</b>
+		</field>
+		<field>
+			<a>cliente.id</a>
+			<b>idCliente</b>		
+		</field>
+		<field>
+			<a>contratista.id</a>
+			<b>idContratista</b>		
+		</field>
+		<field>
+			<a>obra.id</a>
+			<b>idObra</b>		
+		</field>
+	</mapping>
+	
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.domain.model.FamiliaProducto</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.viewmodel.FamiliaProductoViewModel</class-b>
+		<field>
+			<a>id</a>
+			<b>idFamiliaProducto</b>		
+		</field>
+		<field>
+			<a>descripcion</a>
+			<b>descripcionFamiliaProducto</b>		
+		</field>
+		<field>
+			<a>codigo</a>
+			<b>codigoFamiliaProducto</b>		
+		</field>
+		<field>
+			<a>estado</a>
+			<b>estadoFamiliaProducto</b>		
+		</field>
+		<field>
+			<a>unidadMedida</a>
+			<b>unidadMedidaFamiliaProducto</b>		
+		</field>
+	</mapping>
+	
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.presentation.viewmodel.LoteRegistrarViewModel</class-a>
+		<class-b>pe.cpsaa.sac.concreto.domain.model.LoteConcreto</class-b>
+		<field>
+			<a>idProducto</a>
+			<b>producto.id</b>
+		</field>
+		<field>
+			<a>idPlanta</a>
+			<b>planta.id</b>
+		</field>
+		<field>
+			<a>idCliente</a>
+			<b>cliente.id</b>
+		</field>
+		<field>
+			<a>idContratista</a>
+			<b>contratista.id</b>
+		</field>
+		<field>
+			<a>idObra</a>
+			<b>obra.id</b>
+		</field>
+	</mapping>
+	
+	<mapping>
+		<class-a>pe.cpsaa.sac.concreto.domain.model.MuestraIndividualConcreto</class-a>
+		<class-b>pe.cpsaa.sac.concreto.presentation.viewmodel.MuestraIndividualViewModel</class-b>
+		<field>
+			<a>loteConcreto.obra.direccionPuntoLlegada</a>
+			<b>direccionObra</b>
+		</field>
+	</mapping>
+	
+</mappings>

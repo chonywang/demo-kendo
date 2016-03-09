@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>DemoProyecto</display-name>
+  <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring-servlet.xml</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value></param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/app/*</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<servlet-name>jaxws-servlet</servlet-name>
+		<servlet-class>com.sun.xml.ws.transport.http.servlet.WSSpringServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>jaxws-servlet</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- <listener>
+		<listener-class>
+			com.sun.xml.ws.transport.http.servlet.WSServletContextListener
+		</listener-class>
+	</listener> -->
+	<!-- <servlet>
+	
+		<description>Operacion WS</description>
+		<display-name>Operacion</display-name>
+		<servlet-name>Operacion</servlet-name>
+		<servlet-class>
+			com.sun.xml.ws.transport.http.servlet.WSServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Operacion</servlet-name>
+		<url-pattern>/Operacion</url-pattern>
+	</servlet-mapping>
+	 -->
+
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/properties/log4j.properties</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>autenticacionFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>autenticacionFilter</filter-name>
+		<url-pattern>/app/*</url-pattern>		
+	</filter-mapping>
+
+	<welcome-file-list>
+		<!-- <welcome-file>index.jsp</welcome-file> -->
+		<welcome-file>pages/login.jsp</welcome-file>
+	</welcome-file-list>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+</web-app>

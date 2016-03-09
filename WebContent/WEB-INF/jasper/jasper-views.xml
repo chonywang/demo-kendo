@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd
+			">
+
+	
+	<bean id="ingresoCuradoPendientesMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="/resources/jasper/ReporteIngresoCuradoPendiente.jrxml"/>
+<!-- 		<property name="headers"> -->
+<!-- 	    	<props> -->
+<!-- 	        	<prop key="Content-Disposition"> -->
+<!-- 	            	attachment; filename=marcoBenites.pdf -->
+<!-- 	            </prop> -->
+<!-- 	        </props> -->
+<!-- 	     </property> -->
+	</bean>
+	
+	<bean id="ensayoEndurecidoMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+	  <property name="url" value="/resources/jasper/ReporteEnsayoEndurecido.jrxml"/>
+	</bean>
+	
+	<bean id="consultaEnsayoMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+	  <property name="url" value="/resources/jasper/ReporteConsultaEnsayo.jrxml"/>
+	</bean> 
+	
+	<bean id="certificadoCalidadResistenciaCompresionMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+	  <property name="url" value="/resources/jasper/certificadoControlCalidad/compresion/ReporteCertificadoCalidadResistenciaCompresion.jrxml"/>
+	</bean>
+	<bean id="certificadoCalidadResistenciaCompresionAsentamientoMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+	  <property name="url" value="/resources/jasper/certificadoControlCalidad/compresion/ReporteCertificadoCalidadResistenciaCompresionAsentamiento.jrxml"/>
+	</bean>
+	<bean id="certificadoCalidadResistenciaCompresionTemperaturaMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+	  <property name="url" value="/resources/jasper/certificadoControlCalidad/compresion/ReporteCertificadoCalidadResistenciaCompresionTemperatura.jrxml"/>
+	</bean>
+	<bean id="certificadoCalidadResistenciaCompresionAsentamientoTemperaturaMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+	  <property name="url" value="/resources/jasper/certificadoControlCalidad/compresion/ReporteCertificadoCalidadResistenciaCompresionAsentamientoTemperatura.jrxml"/>
+	</bean>
+	
+	<bean id="certificadoCalidadResistenciaFlexionMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+	  <property name="url" value="/resources/jasper/certificadoControlCalidad/flexion/ReporteCertificadoCalidadResistenciaFlexion.jrxml"/>
+	</bean>
+	<bean id="certificadoCalidadResistenciaFlexionAsentamientoMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+	  <property name="url" value="/resources/jasper/certificadoControlCalidad/flexion/ReporteCertificadoCalidadResistenciaFlexionAsentamiento.jrxml"/>
+	</bean>
+	<bean id="certificadoCalidadResistenciaFlexionTemperaturaMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+	  <property name="url" value="/resources/jasper/certificadoControlCalidad/flexion/ReporteCertificadoCalidadResistenciaFlexionTemperatura.jrxml"/>
+	</bean>
+	<bean id="certificadoCalidadResistenciaFlexionAsentamientoTemperaturaMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+	  <property name="url" value="/resources/jasper/certificadoControlCalidad/flexion/ReporteCertificadoCalidadResistenciaFlexionAsentamientoTemperatura.jrxml"/>
+	</bean>
+	
+<!-- 	<bean id="cartaControlResistenciaCompresionMultiViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView"> -->
+<!-- 	  <property name="url" value="/resources/jasper/cartaControl/ReporteCartaControlResistenciaCompresion.jrxml"/> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="cartaControlResistenciaCompresionExcelViewReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsXlsView"> -->
+<!-- 	  <property name="url" value="/resources/jasper/cartaControl/ReporteCartaControlResistenciaCompresion.jrxml"/> -->
+<!-- 	  <property name="net.sf.jasperreports.export.xls.white.page.background" value="false" />	   -->
+<!-- 	</bean> -->
+	
+				
+</beans>

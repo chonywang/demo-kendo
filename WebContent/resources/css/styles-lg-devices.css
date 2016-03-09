@@ -1,0 +1,41 @@
+
+/*Estilos para pantallas tipo Large Desktop col-lg-(numero de columnas)*/
+
+@media (min-width: 1200px) {
+		
+	.remove-padding-left-col-lg {
+		padding-left: 0px;
+   		padding-right: 15px;
+   	}
+	.remove-padding-right-col-lg {
+		padding-left: 15px;
+   		padding-right: 0px;
+	}
+	.remove-padding-lateral-col-lg {
+		padding: 0px;
+	}
+	.row-padding-top-lg {
+		padding-top: 15px;
+	}
+	.row-padding-top-popup-lg {
+		padding-top: 20px;
+	}
+	.row-padding-bottom-lg {
+		padding-bottom: 20px;
+	}
+	.row-padding-bottom-popup-lg {
+		padding-bottom: 20px;
+	}
+	
+	
+	
+	
+	.only-padding-left-5 {
+		padding-left: 5px;
+   		padding-right: 0px;
+	}
+	
+	
+	
+	
+}
